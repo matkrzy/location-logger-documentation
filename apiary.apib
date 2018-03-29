@@ -1,80 +1,54 @@
 FORMAT: 1A
-HOST: http://polls.apiblueprint.org/
+HOST: http://private-7bed3-locationlogger.apiary-mock.com
 
 # location-tracker
 
-Polls is a simple API allowing consumers to view polls and vote in them.
+location tracker is a project realized at Silesian University of Technology on the 6th semester.
+The application collects tracks with gps points location and displays it on the map and additional
+information based on collected data. User is able to manage saved tracks and devices related 
+to the application. Any device added to the user profile is able to send data to the application.
 
-## Questions Collection [/questions]
 
-### List All Questions [GET]
+## Token [/token]
+
+### Refresh token [GET]
+
+Refresh user token
 
 + Response 200 (application/json)
+       
+        {
+            "token": "302cfd16-339f-11e8-b467-0ed5f89f718b" 
+        }
+
+## User information [/me]
+
+### User information [GET]
+
+Fetch user data
+
++ Response 200 (application/json)
+        
+        {
+            "id": 1,
+            "email": "user@email.com"
+        }
+        
+
+## Tracks [/tracks]
+
+### Tracks collection [GET]
+
+Fetch all user trancks 
+
++ Response 200
 
         [
             {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 2048
-                    }, {
-                        "choice": "Python",
-                        "votes": 1024
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 512
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 256
-                    }
+                "id": 1,
+                "name: "Test track",
+                "points":[
+                    {"lat": 25.00, "lng": 22.22}
                 ]
             }
         ]
-
-### Create a New Question [POST]
-
-You may create your own question using this action. It takes a JSON
-object containing a question and a collection of answers in the
-form of choices.
-
-+ Request (application/json)
-
-        {
-            "question": "Favourite programming language?",
-            "choices": [
-                "Swift",
-                "Python",
-                "Objective-C",
-                "Ruby"
-            ]
-        }
-
-+ Response 201 (application/json)
-
-    + Headers
-
-            Location: /questions/2
-
-    + Body
-
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 0
-                    }, {
-                        "choice": "Python",
-                        "votes": 0
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 0
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 0
-                    }
-                ]
-            }
