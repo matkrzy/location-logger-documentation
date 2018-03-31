@@ -8,47 +8,195 @@ The application collects tracks with gps points location and displays it on the 
 information based on collected data. User is able to manage saved tracks and devices related 
 to the application. Any device added to the user profile is able to send data to the application.
 
+## Registration [/register]
+
+Registration new user to the system
+
+### Register user [POST]
+
++ Request (application/json)
+
+        {
+            "email": "user.name@userservice.com",
+            "password": "user-super-password"
+        }
+        
++ Response 201 (application/json)
+
+    + Attributes (User)
+
+
+## Login [/login]
+
+Login as an existing user 
+
+### Login user [POST]
+
++ Request (application/json)
+
+        {
+            "email": "user.name@userservice.com",
+            "password": "user-super-password"
+        }
+        
++ Response 200 (application/json)
+
+    + Attributes (User)
+
 
 ## Token [/token]
 
-### Refresh token [GET]
+Refresh a user auth token
 
-Refresh user token
+### Refresh token [POST]
 
-+ Response 200 (application/json)
-       
++ Request (application/json)
+
         {
-            "token": "302cfd16-339f-11e8-b467-0ed5f89f718b" 
-        }
-
-## User information [/me]
-
-### User information [GET]
-
-Fetch user data
-
-+ Response 200 (application/json)
-        
-        {
-            "id": 1,
-            "email": "user@email.com"
+            "email": "user.name@userservice.com",
         }
         
++ Response 200 (application/json)
 
-## Tracks [/tracks]
+    + Body
+    
+            {
+               "token": "secret-token"
+            }
 
-### Tracks collection [GET]
 
-Fetch all user trancks 
+## User data [/me]
 
-+ Response 200
+Get user data
 
-        [
+### Get user data [GET]
+
++ Response 200 (application/json)
+
+    + Attributes (User)
+
+## Devices list [/devices]
+
+Get list of all users devices
+
+### Get list of devices [GET]
+
++ Response 200 (application/json)
+
+    + Attributes (array[Device Nexus ,Device Iphone])
+
+## Device [/device/{device_id}]
+
+Manage device
+
++ Parameters
+    + device_id (number, required) - id of device
+
+### Get device details [GET]
+
+Get device details by device id
+
++ Response 200 (application/json)
+
+    + Attributes (Device Nexus)
+    
+
+### Update device details [POST]
+
+Update device details
+
++ Request (application/json)
+
+        {
+            "name": "LG Nexus 6X",
+        }
+
++ Response 200 (application/json)
+
+    + Body
+    
             {
                 "id": 1,
-                "name: "Test track",
-                "points":[
-                    {"lat": 25.00, "lng": 22.22}
-                ]
+                "name": "LG Nexus 6X",
+                "uuid": "21bb24d8352511e8b4670ed5f89f718b",
+                "removed": false
             }
-        ]
+
+## Tracks list [/tracks]
+
+## Track details [/track/{id}]
+
+Get track details
+
++ Parameters
+    + id (number, required) - id of track
+
+### Get track details [GET]
+
++ Response 200 (application/json)
+
+    + Attributes (Track)
+
+# Data Structures
+
+## User (object)
++ id: 1 (number)
++ email: user.name@userservice.com (string)
++ removed: false (boolean)
+
+## Device Nexus (object)
++ id: 1 (number)
++ name: LG Nexus 5X (string)
++ uuid: 21bb24d8352511e8b4670ed5f89f718b (string)
++ removed: false (boolean)
+
+## Device Iphone (object)
++ id: 2 (number)
++ name: Iphone 5s (string)
++ uuid: 21bb2776352511e8b4670ed5f89f718b (string)
++ removed: false (boolean)
+
+## Track (object)
++ id: 1 (number)
++ name: Forest running (string)
++ removed: false (boolean)
++ points (array[Point1, Point2, Point3]) (array)
+
+
+## Point1 (object)
++ id: 1 (number)
++ timestamp: 123412341 (number)
++ latitude: 50.3235 (number)
++ longitude: 40.2335 (number)
++ altitude: 44.23241 (number)
++ speed: 40 (number)
++ direction: 3 (number)
+
+## Point2 (object)
++ id: 2 (number)
++ timestamp: 123412342 (number)
++ latitude: 50.3235 (number)
++ longitude: 40.2335 (number)
++ altitude: 44.23241 (number)
++ speed: 40 (number)
++ direction: 2 (number)
+
+
+## Point3 (object)
++ id: 3 (number)
++ timestamp: 123412343 (number)
++ latitude: 50.3236 (number)
++ longitude: 40.2335 (number)
++ altitude: 44.23241 (number)
++ speed: 40 (number)
++ direction: 1 (number)
+
+
+## Point4 (object)
++ id: 4 (number)
++ timestamp: 123412344 (number)
++ latitude: 50.3237 (number)
++ longitude: 40.2335 (number)
++ altitude: 44.23241 (number)
++ speed: 40 (number)
++ direction: 4 (number)
