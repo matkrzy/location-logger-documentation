@@ -8,7 +8,7 @@ The application collects tracks with gps points location and displays it on the 
 information based on collected data. User is able to manage saved tracks and devices related 
 to the application. Any device added to the user profile is able to send data to the application.
 
-## Registration [/register]
+## Registration [/user/register]
 
 Registration new user to the system
 
@@ -17,7 +17,7 @@ Registration new user to the system
 + Request (application/json)
 
         {
-            "email": "user.name@userservice.com",
+            "username": "user.name@userservice.com",
             "password": "user-super-password"
         }
         
@@ -26,7 +26,7 @@ Registration new user to the system
     + Attributes (User)
 
 
-## Login [/login]
+## Login [/user/login]
 
 Login as an existing user 
 
@@ -101,7 +101,7 @@ Get device details by device id
     + Attributes (Device Nexus)
     
 
-### Update device details [POST]
+### Update device details [PATCH]
 
 Update device details
 
@@ -120,6 +120,21 @@ Update device details
                 "name": "LG Nexus 6X",
                 "uuid": "21bb24d8352511e8b4670ed5f89f718b",
                 "removed": false
+            }
+
+### Delete device [DELETE]
+
+Delete device
+
++ Response 200 (application/json)
+
+    + Body
+            
+            {
+                "id": 1,
+                "name": "LG Nexus 5X",
+                "uuid": "21bb24d8352511e8b4670ed5f89f718b",
+                "removed": true
             }
 
 ## Tracks list [/tracks]
@@ -168,16 +183,25 @@ Get track details
 ## Track1 (object)
 + id: 1 (number)
 + name: Forest running (string)
++ date: 22-12-2016 (string) 
++ distance: 56.4 (number)
++ time: 1584 (number)
 + removed: false (boolean)
 
 ## Track2 (object)
 + id: 2 (number)
 + name: Work (string)
++ date: 22-12-2016 (string) 
++ distance: 56.4 (number)
++ time: 564 (number)
 + removed: false (boolean)
 
 ## Track3 (object)
 + id: 3 (number)
 + name: 22-10-2018 (string)
++ date: 22-10-2018  (string) 
++ distance: 89.4 (number)
++ time: 1164 (number)
 + removed: false (boolean)
 
 
