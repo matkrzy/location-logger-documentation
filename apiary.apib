@@ -35,35 +35,13 @@ Login as an existing user
 + Request (application/json)
 
         {
-            "email": "user.name@userservice.com",
+            "username": "user.name@userservice.com",
             "password": "user-super-password"
         }
         
 + Response 200 (application/json)
 
     + Attributes (User)
-
-
-## Token [/token]
-
-Refresh a user auth token
-
-### Refresh token [POST]
-
-+ Request (application/json)
-
-        {
-            "email": "user.name@userservice.com",
-        }
-        
-+ Response 200 (application/json)
-
-    + Body
-    
-            {
-               "token": "secret-token"
-            }
-
 
 ## User data [/me]
 
@@ -165,7 +143,7 @@ Get track details
 
 ## User (object)
 + id: 1 (number)
-+ email: user.name@userservice.com (string)
++ username: user.name@userservice.com (string)
 + removed: false (boolean)
 
 ## Device Nexus (object)
@@ -182,27 +160,50 @@ Get track details
 
 ## Track1 (object)
 + id: 1 (number)
-+ name: Forest running (string)
-+ date: 22-12-2016 (string) 
-+ distance: 56.4 (number)
-+ time: 1584 (number)
-+ removed: false (boolean)
++ device_id: 2 (number)
++ date: 2012-06-25T17:43:20.000+0000 (timestamp) 
++ distance: 36018.942 (number)
++ duration: 01:29:58
++ startTime: 2012-06-25T17:43:20.000+0000 (timestamp)
++ endTime: 2012-06-25T19:13:18.000+0000 (timestamp)
++ minSpeed: 1.0 (number)
++ maxSpeed: 41.06 (number)
++ avgSpeed: 28.42 (number)
++ minAltitude: 223.25 (number)
++ maxAltitude: 283.75 (number)
++ avgAltitude: 246.742 (number)
 
 ## Track2 (object)
 + id: 2 (number)
-+ name: Work (string)
-+ date: 22-12-2016 (string) 
-+ distance: 56.4 (number)
-+ time: 564 (number)
-+ removed: false (boolean)
++ name: Test name track 2 (string)
++ device_id: 2 (number)
++ date: 2012-06-25T17:43:20.000+0000 (timestamp) 
++ distance: 36018.942 (number)
++ duration: 01:29:58
++ startTime: 2012-06-25T17:43:20.000+0000 (timestamp)
++ endTime: 2012-06-25T19:13:18.000+0000 (timestamp)
++ minSpeed: 1.0 (number)
++ maxSpeed: 41.06 (number)
++ avgSpeed: 28.42 (number)
++ minAltitude: 223.25 (number)
++ maxAltitude: 283.75 (number)
++ avgAltitude: 246.742 (number)
 
 ## Track3 (object)
 + id: 3 (number)
-+ name: 22-10-2018 (string)
-+ date: 22-10-2018  (string) 
-+ distance: 89.4 (number)
-+ time: 1164 (number)
-+ removed: false (boolean)
++ name: Test name track 3 (string)
++ device_id: 2 (number)
++ date: 2012-06-25T17:43:20.000+0000 (timestamp) 
++ distance: 36018.942 (number)
++ duration: 01:29:58
++ startTime: 2012-06-25T17:43:20.000+0000 (timestamp)
++ endTime: 2012-06-25T19:13:18.000+0000 (timestamp)
++ minSpeed: 1.0 (number)
++ maxSpeed: 41.06 (number)
++ avgSpeed: 28.42 (number)
++ minAltitude: 223.25 (number)
++ maxAltitude: 283.75 (number)
++ avgAltitude: 246.742 (number)
 
 
 ## Point1 (object)
@@ -223,7 +224,6 @@ Get track details
 + speed: 40 (number)
 + direction: 2 (number)
 
-
 ## Point3 (object)
 + id: 3 (number)
 + timestamp: 123412343 (number)
@@ -232,7 +232,6 @@ Get track details
 + altitude: 44.23241 (number)
 + speed: 40 (number)
 + direction: 1 (number)
-
 
 ## Point4 (object)
 + id: 4 (number)
